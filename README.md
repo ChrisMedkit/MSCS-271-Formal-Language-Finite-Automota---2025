@@ -8,7 +8,6 @@ The final class project will be added to this repository separately.
 
 | Folder | Topic | Model |
 |---|---|---|
-| [`00-hello-world`](./00-hello-world) | Environment setup | n/a |
 | [`01-dfa-mod7`](./01-dfa-mod7) | Binary numbers congruent to 2 mod 7 | DFA |
 | [`02-dfa-river-crossing`](./02-dfa-river-crossing) | Man, wolf, goat and cabbage puzzle | DFA |
 | [`03-nfa-contains-aa`](./03-nfa-contains-aa) | Strings over {a, b} containing `aa` | NFA |
