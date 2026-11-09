@@ -14,8 +14,6 @@ The final class project will be added to this repository separately.
 | [`04-nfa-binary-9-state`](./04-nfa-binary-9-state) | 9-state NFA over binary input | NFA |
 | [`05-ll1-expression-parser`](./05-ll1-expression-parser) | Arithmetic expression parser | LL(1) / pushdown |
 | [`06-turing-machine`](./06-turing-machine) | Configurable Turing machine simulator | Turing machine |
-| [`07-blank-template`](./07-blank-template) | Empty starter file | n/a |
-| [`08-final-project-fractals`](./08-final-project-fractals) | **Final project:** fractals from regular expressions and L-systems | Regular expressions / L-systems |
 
 ## Assignments
 
