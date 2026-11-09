@@ -19,9 +19,6 @@ The final class project will be added to this repository separately.
 
 ## Assignments
 
-### 00 - Hello World
-**Purpose:** Verify the C++ toolchain and IDE are set up correctly.
-**Description:** The default "Hello, World!" project. No automata content.
 
 ### 01 - DFA: Binary Numbers Congruent to 2 (mod 7)
 **Purpose:** Implement a DFA as a transition table and use it to test a numeric property of a string.
@@ -58,53 +55,6 @@ Example: `aa` and `baab` are accepted; `ab` and `ba` are not.
 **Purpose:** Simulate the most general model of computation covered in the course.
 **Description:** A `TuringMachine` class with an expandable tape (`B` is the blank symbol), a read/write head, and a transition map keyed by `(state, symbol)` that yields `(write symbol, move direction, next state)`. The program prints the state and tape after every step, marking the head position as `(x)`, and stops on the accepting state or when no transition applies. The transitions in `main` are a sample table to be edited to match a given machine diagram.
 **Key concepts:** Turing machines, tape/head model, transition functions.
-
-### 07 - Blank Template
-**Purpose:** Empty starter file with includes only.
-**Description:** `main()` has no code. Kept for completeness; delete it if it is not tied to an assignment.
-
-## Final Project: Fractals from Formal Languages
-
-**Folder:** [`08-final-project-fractals`](./08-final-project-fractals)
-
-**Purpose:** Connect formal language theory to visual output by generating fractals from regular expressions and from L-systems (grammar-style string rewriting).
-
-```
-08-final-project-fractals/
-├── web/        fractal-auto.html           Regular-expression fractal generator (browser)
-├── blender/    lsystem_generator.py        3D L-system add-on for Blender
-├── models/     Simple_fractal_tree.glb     3D fractal tree model
-│               Sticks_by_Paul_Bourke.glb   3D model (see note below)
-└── animation/  2D_animation_20001-0250.mov Rendered 2D animation
-```
-
-### Regular Expression Fractals (`web/fractal-auto.html`)
-Open the file in any browser; no build step or dependencies are needed. For each integer `i` from 0 up to the iteration count, the page converts `i` to binary and tests that string against a user-supplied regular expression. A match moves a turtle forward one step. A non-match turns the turtle by the rotation angle. The path is then scaled to fit a 600x600 canvas and drawn. The defaults are the expression `^(0*|10*1)*$`, an angle of 60 degrees and 25,000 iterations. Changing the expression or angle produces different fractal shapes, since the language a regex accepts determines the turn/step pattern.
-**Key concepts:** regular languages, regex matching, binary representations, turtle graphics.
-
-### 3D L-System Generator (`blender/lsystem_generator.py`)
-A Blender 4.4 add-on that adds an **L-System** tab to the 3D viewport sidebar. It rewrites an axiom with user-defined rules (`F`, `A`, `B`) for a chosen number of iterations, then interprets the result with a 3D turtle. Orientation is stored as a quaternion, so yaw, pitch and roll (`+ - & ^ \ /`) and a 180-degree flip (`|`) work in any direction. `[` and `]` push and pop the turtle's position and orientation, which makes branching structures possible. The output is a set of poly splines on a curve object with a bevel, so it renders with thickness. Settings include axiom, rules, iterations, angle, step length and thickness.
-**Key concepts:** L-systems, string rewriting grammars, stack-based branching, 3D rotations with quaternions.
-
-To install: in Blender, go to *Edit > Preferences > Add-ons > Install...*, choose `lsystem_generator.py`, and enable it. Or paste it into the Text Editor and run it.
-
-### Models and Animation
-- `models/Simple_fractal_tree.glb` is a 3D fractal tree. `glb` files can be opened in Blender or any glTF viewer.
-- `models/Sticks_by_Paul_Bourke.glb` is a 3D model named after Paul Bourke, whose work covers fractals and generative geometry. If this model is not entirely your own work, add a credit and the license/source here before publishing.
-- `animation/2D_animation_20001-0250.mov` is a rendered 2D animation (frames 20001 to 0250 per the filename).
-
-## Building and Running
-
-Each C++ assignment folder (`00` to `07`) contains a single `main.cpp`. From inside a folder:
-
-```bash
-g++ -std=c++17 -o main main.cpp
-./main
-```
-
-C++17 is required for `06-turing-machine` (structured bindings). The final project does not use C++; see its section above.
-
-The repository includes a `.gitignore` covering C++ build output (object files, executables, CMake and IDE folders), plus OS files and Python cache files.
 
 ## Tools
 
