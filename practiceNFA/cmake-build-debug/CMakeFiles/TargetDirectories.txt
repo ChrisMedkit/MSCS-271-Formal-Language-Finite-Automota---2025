@@ -1,0 +1,3 @@
+/Users/chrismedina/CLionProjects/practiceNFA/cmake-build-debug/CMakeFiles/practiceNFA.dir
+/Users/chrismedina/CLionProjects/practiceNFA/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/chrismedina/CLionProjects/practiceNFA/cmake-build-debug/CMakeFiles/rebuild_cache.dir
