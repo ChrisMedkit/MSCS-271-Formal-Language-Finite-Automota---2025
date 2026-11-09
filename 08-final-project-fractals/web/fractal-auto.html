@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Regular Expression Fractals</title>
+</head>
+<body>
+<canvas id="paint" width="600" height="600" style="border:1px solid #000000;"></canvas><br/>
+<form onclick="return false">
+<table border="0">
+	<tr>
+		<td>Regular Expression</td>
+		<td><input type="text" id="regularExpression" size="35" value="^(0*|10*1)*$"/></td>
+	</tr>
+	<tr>
+		<td>Rotation Angle:</td>
+		<td><input type="text" id="rotationAngle" size="35" value="60"/></td>
+	</tr>
+	<tr>
+		<td>Number of Iterations: </td>
+		<td><input type="text" id="numIterations" size="35" value="25000"/></td>
+	</tr>
+</table>
+<button type="submit" onClick="generateFractal()">Generate Fractal</button>
+</form>
+<script>
+	var c = document.getElementById("paint");
+	var ctx = c.getContext("2d");
+
+
+
+	function generateFractal() {
+		var inputRegEx = new RegExp(document.getElementById("regularExpression").value, '');
+		var currentX = 0.0;
+		var currentY = 0.0;
+		var ra = parseFloat(document.getElementById("rotationAngle").value) * Math.PI / 180.0;
+		var ns = parseInt(document.getElementById("numIterations").value);
+		var currentAngle = 0.0;
+		
+		var minX = -0.01;
+		var minY = -0.01;
+		var maxX = 0.01;
+		var maxY = 0.01;
+		
+		for (var i = 0; i < ns; i++) {
+			if (inputRegEx.test(i.toString(2))) {
+				currentX = currentX + Math.cos(currentAngle);
+				currentY = currentY + Math.sin(currentAngle);
+				
+				maxX = (currentX > maxX) ? currentX : maxX;
+				minX = (currentX < minX) ? currentX : minX;
+				maxY = (currentY > maxY) ? currentY : maxY;
+				minY = (currentY < minY) ? currentY : minY;
+			}
+			else {
+				currentAngle = currentAngle + ra;
+			}
+		}
+		
+		var ad = 550.0/((maxX - minX > maxY - minY) ?  maxX - minX : maxY - minY);
+		var startX = 299.5 - ad*(maxX+minX)/2.0
+		var startY = 299.5 - ad*(maxY+minY)/2.0
+		
+		drawFractal(startX, startY, ad, inputRegEx, ra, ns);
+	}
+	
+	function drawFractal(startX, startY, ad, inputRegEx, ra, ns) {
+		ctx.rect(0,0,600,600);
+		ctx.fillStyle = "#FFFFFF";
+		ctx.fill();
+	
+		var currentX = startX;
+		var currentY = startY;
+		var currentAngle = 0.0;
+		
+		ctx.beginPath()
+		for (var i = 0; i < ns; i++) {
+			if (inputRegEx.test(i.toString(2))) {
+				ctx.moveTo(currentX, currentY);
+				currentX += Math.cos(currentAngle)*ad;
+				currentY += Math.sin(currentAngle)*ad;
+				ctx.lineTo(currentX, currentY);
+			}
+			else {
+				currentAngle += ra;
+			}
+		}
+		ctx.stroke();
+	}
+</script>
+</body>
+</html>
